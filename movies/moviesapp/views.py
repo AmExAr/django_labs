@@ -1,0 +1,9 @@
+from django.shortcuts import render
+from django.views.generic import View
+from .models import Movie
+
+class MovieListView(View):
+    """Список фильмов"""
+    def get (self, request):
+        movies = Movie.objects.all()
+        return render(request, "moviesapp/movie_list.html", {"movie_list": movies})
